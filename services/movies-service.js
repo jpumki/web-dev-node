@@ -15,4 +15,22 @@ module.exports = (app) => {
   };
 
   app.delete("/api/movies/:mid", deleteMovie);
+
+  const createMovie = (req, res) => {
+    const movie = req.body;
+    movie._id = Math.floor(Math.random() * 999).toString();
+    movies = [...movies, movie];
+    res.json(movies);
+  };
+  app.post("/api/movies", createMovie);
+
+  const saveMovie = (req, res) => {
+    const newMovie = req.body;
+    const movieId = req.params['mid'];
+    movies = movies.map(movie =>
+        movie._id === movieId ? newMovie : movie);
+    res.json(movies);
+}
+app.put('/api/movies/:mid', saveMovie);
+
 };
