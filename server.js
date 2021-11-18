@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const bodyParser = require('body-parser');
+const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(function (req, res, next) {
@@ -18,7 +18,10 @@ app.get("/hello", (req, res) => {
   res.send("Hello World!");
 });
 
-require('./services/movies-service')(app);
-require('./services/tweets-service')(app);
+require("./services/movies-service")(app);
+require("./services/tweets-service")(app);
 
-app.listen(4000);
+var port = process.env.PORT || 4000;
+app.listen(port, "0.0.0.0", function () {
+  console.log("Listening on Port 4000");
+});
