@@ -26,11 +26,9 @@ module.exports = (app) => {
 
   const saveMovie = (req, res) => {
     const newMovie = req.body;
-    const movieId = req.params['mid'];
-    movies = movies.map(movie =>
-        movie._id === movieId ? newMovie : movie);
+    const movieId = req.params["mid"];
+    movies = movies.map((movie) => (movie._id === movieId ? newMovie : movie));
     res.json(movies);
-}
-app.put('/api/movies/:mid', saveMovie);
-
+  };
+  app.put("/api/movies/:mid", saveMovie);
 };
