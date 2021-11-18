@@ -14,6 +14,10 @@ app.use(function (req, res, next) {
   next();
 });
 
+app.get("/", (req, res) => {
+  res.send("Welcome to Junho's Web-Dev-Node-App");
+});
+
 app.get("/hello", (req, res) => {
   res.send("Hello World!");
 });

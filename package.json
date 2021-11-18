@@ -1,7 +1,7 @@
 {
   "name": "web-dev-node",
   "version": "1.0.0",
-  "description": "",
+  "description": "Junho Park's Node App",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -11,7 +11,7 @@
     "example",
     "heroku"
   ],
-  "author": "",
+  "author": "Junho Park",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
