@@ -28,6 +28,7 @@ app.get("/hello", (req, res) => {
 require("./services/movies-service")(app);
 require("./services/tweets-service")(app);
 require("./movies/service")(app);
+require("./services/tweeter-service")(app);
 
 app.listen(process.env.PORT || 4000, function () {
   console.log("Listening on Port 4000");
