@@ -19,6 +19,7 @@ const schema = mongoose.Schema(
       retweets: { type: Number, defaultValue: 0 },
       likes: { type: Number, defaultValue: 0 },
     },
+    liked: Boolean
   },
   { collection: "tweets" }
 );

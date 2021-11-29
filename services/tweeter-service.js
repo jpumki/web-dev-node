@@ -18,6 +18,7 @@ module.exports = (app) => {
         retweets: 234,
         likes: 345,
       },
+      liked: false,
       ...req.body,
     };
 
@@ -29,7 +30,17 @@ module.exports = (app) => {
     dao.deleteTweet(req.params.id).then((status) => res.send(status));
   app.delete("/rest/tweets/:id", deleteTweet);
 
-  const likeTweet = (req, res) =>
-    dao.updateTweet(req.params.id, req.body).then((status) => res.send(status));
+  const likeTweet = (req, res) => {
+    const updateTweet = req.body;
+    updateTweet.liked = updateTweet.liked == false ? true : false;
+    if (updateTweet.liked == true) {
+      updateTweet.stats.likes++;
+    } else {
+      updateTweet.stats.likes--;
+    }
+    dao
+      .updateTweet(req.params.id, updateTweet)
+      .then((status) => res.send(status));
+  };
   app.put("/rest/tweets/:id", likeTweet);
 };
